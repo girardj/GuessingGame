@@ -1,0 +1,48 @@
+/**
+* This program prompts the user to enter a number between 1 and 10
+* and then compares the user's answer to a randomly generated number.
+* If the numbers are the same the program will print "Winner", if they are
+* different then "Sorry, Wrong" will be printed. The user is given the option attempt
+* this 3 times (a complete round) if chooses to select "y" when prompted (used y and n instead of 1 and 2).
+* If in those three attempts or if the user decides not to guess again.
+* The program will print "Thank you for playing!"
+* 
+* @author (Jake Girard) 
+* @version (1/27/19)
+*/
+import java.util.Scanner;
+
+public class guessingGame {
+
+    public static void main(String args[]) {
+        int randomN = (int) (Math.random() * 10) + 1;
+
+        Scanner input = new Scanner(System.in);
+        int guess;
+        System.out.println("This is the one and only guessing game");
+        System.out.println();
+        int attempts = 0;
+        String playAgain = "";
+        
+        do {
+            System.out.print("Please guess a number between 1 and 10: ");
+                guess = input.nextInt();
+                attempts++;
+    
+                if (guess == randomN) {
+                    System.out.println("Winner");
+                    System.out.println("The random number was: " + randomN);
+                } else if (guess > randomN) {
+                    System.out.println("Sorry, Wrong");
+                } else if (guess < randomN) {
+                    System.out.println("Sorry, Wrong");
+                } 
+            if(attempts < 3){
+            System.out.println("Would you like to guess again (y/n)?");
+            playAgain = input.next();
+        }
+        } while(guess != randomN && attempts < 3 && playAgain.equalsIgnoreCase("y"));
+        System.out.println("Thank you for playing!");
+        System.out.println("The random number was: " + randomN);
+    }
+}
